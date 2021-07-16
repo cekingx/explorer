@@ -1,5 +1,7 @@
 'use strict';
 
+var remoteUrl = "http://localhost:8545";
+
 angular.module('ethExplorer', ['ngRoute','ui.bootstrap'])
 
 .config(['$routeProvider',
@@ -27,8 +29,7 @@ angular.module('ethExplorer', ['ngRoute','ui.bootstrap'])
     }])
     .run(function($rootScope) {
         var web3 = new Web3();
-        var eth_node_url = 'http://localhost:8545'; // TODO: remote URL
-	web3.setProvider(new web3.providers.HttpProvider(eth_node_url));
+        web3.setProvider(new web3.providers.HttpProvider(remoteUrl));
         $rootScope.web3 = web3;
         function sleepFor( sleepDuration ){
             var now = new Date().getTime();
